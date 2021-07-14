@@ -28,20 +28,20 @@ class ViewController: UIViewController, WKNavigationDelegate {
         webView.allowsBackForwardNavigationGestures = true
     }
     
-//    @objc func openTapped() {
-//
-//        let ac = UIAlertController(title: "Open page...", message: nil, preferredStyle: .actionSheet)
-//        ac.addAction(UIAlertAction(title: "www.apple.com", style: .default, handler: openPage))
-//        ac.addAction(UIAlertAction(title: "www.hackingwithswift.com", style: .default, handler: openPage))
-//        ac.addAction(UIAlertAction(title: "Close", style: .cancel))
-//        ac.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
-//        present(ac, animated: true)
-//    }
-//
-//    func openPage(action: UIAlertAction) {
-//
-//        let url = URL(string: action.title!)!
-//        webView.load(URLRequest(url: url))
-//    }
+    @objc func openTapped() {
+
+        let ac = UIAlertController(title: "Open page...", message: nil, preferredStyle: .actionSheet)
+        ac.addAction(UIAlertAction(title: "www.apple.com", style: .default, handler: openPage))
+        ac.addAction(UIAlertAction(title: "www.hackingwithswift.com", style: .default, handler: openPage))
+        ac.addAction(UIAlertAction(title: "Close", style: .cancel))
+        ac.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(ac, animated: true)
+    }
+
+    func openPage(action: UIAlertAction) {
+
+        let url = URL(string: action.title!)!
+        webView.load(URLRequest(url: url))
+    }
 }
 
