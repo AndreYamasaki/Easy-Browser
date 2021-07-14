@@ -21,7 +21,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Open", style: .plain, target: self, action: #selector(openTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Open", style: .plain, target: self, action: #selector(openTapped))
         
         let url = URL(string: "https://www.hackingwithswift.com")!
         webView.load(URLRequest(url: url))
@@ -29,7 +29,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
     }
     
 //    @objc func openTapped() {
-//        
+//
 //        let ac = UIAlertController(title: "Open page...", message: nil, preferredStyle: .actionSheet)
 //        ac.addAction(UIAlertAction(title: "www.apple.com", style: .default, handler: openPage))
 //        ac.addAction(UIAlertAction(title: "www.hackingwithswift.com", style: .default, handler: openPage))
@@ -37,9 +37,9 @@ class ViewController: UIViewController, WKNavigationDelegate {
 //        ac.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
 //        present(ac, animated: true)
 //    }
-//    
+//
 //    func openPage(action: UIAlertAction) {
-//        
+//
 //        let url = URL(string: action.title!)!
 //        webView.load(URLRequest(url: url))
 //    }
