@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     var webView: WKWebView!
     var progressView: UIProgressView!
     var websites = ["apple.com", "hackingwithswift.com"]
+    var passedWebsite: String = ""
     
     override func loadView() {
         webView = WKWebView()
@@ -43,7 +44,7 @@ class ViewController: UIViewController {
         
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
         
-        let url = URL(string: "https://" + websites[1])!
+        let url = URL(string: "https://" + passedWebsite)!
         webView.load(URLRequest(url: url))
         webView.allowsBackForwardNavigationGestures = true
     }
@@ -64,7 +65,8 @@ class ViewController: UIViewController {
         
         guard let actionTitle = action.title else {return}
         guard let url = URL(string: actionTitle) else {return}
-        webView.load(URLRequest(url: url))
+        
+            webView.load(URLRequest(url: url))
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
@@ -85,6 +87,7 @@ extension ViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         
         let url = navigationAction.request.url
+        
         if let host = url?.host {
             for website in websites {
                 if host.contains(website) {
@@ -92,12 +95,12 @@ extension ViewController: WKNavigationDelegate {
                     return
                 }
             }
-        } else {
-    //Challenge 1: If users try to visit a URL that isn’t allowed, show an alert saying it’s blocked.
-        let ac = UIAlertController(title: "Blocked website", message: "This website is not part of this app list", preferredStyle: .alert)
-          ac.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
-          present(ac, animated: true)
-            decisionHandler(.cancel)
+            //Challenge 1: If users try to visit a URL that isn’t allowed, show an alert saying it’s blocked.
+                let ac = UIAlertController(title: "Blocked website", message: "This website is not part of this app list", preferredStyle: .alert)
+                  ac.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+                  present(ac, animated: true)
         }
+            decisionHandler(.cancel)
+        
     }
 }
